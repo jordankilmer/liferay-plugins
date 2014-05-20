@@ -1,0 +1,84 @@
+{
+    "layoutTemplateId": "2_columns_ii",
+    "publicPages": [
+        {    
+            "columns": [
+                [
+                    "Stormybeach.html"
+                ],
+                [
+                    {
+                        "portletId": "101",
+                            "portletPreferences": {
+                                "articleId": "First Paragraph.html" 
+                            }        
+                    }
+                ],
+                [   
+                    {
+                        "portletId": "3"
+                    },
+                    {
+                        "portletId": "97"
+                    }
+                ],
+                [
+                     {
+                        "portletId": "82"
+                     }
+                ]
+            ],      
+            "friendlyURL": "/home",
+            "layoutTemplateId": "1_2_1_columns",
+            "name": "Welcome",
+            "title": "Welcome"
+        },
+        {
+            "columns": [
+                [   
+                    {
+                        "portletId": "26"
+                    }   
+                ],
+                [
+                    {
+                        "portletId": "101"
+                    }
+                ],
+                [
+                    {
+                        "portletId": "3"
+                    },
+                    {
+                        "portletId": "82"
+                    }
+                ]
+            ],    
+            "friendlyURL": "/about",
+            "layoutTemplateId": "1_2_columns_ii",
+            "name": "About",
+            "title": "About"
+        },
+        {
+            "friendlyURL": "/typography",
+            "name": "Typography",
+            "title": "Typography"
+        },
+        {
+            "friendlyURL": "/block-regions",
+            "name": "Block Regions",
+            "title": "Health Plans"
+        },
+        {
+            "friendlyURL": "/blogs",
+            "name": "Blogs",
+            "title": "Blogs"
+        },
+        {
+            "friendlyURL": "/contact",
+            "name": "Contact",
+            "title": "Contact"
+        }
+    ]
+}
+
