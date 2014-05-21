@@ -24,7 +24,11 @@
 
                     "Social Media.html",
 
-                    "Links.html"
+                    "Links.html",
+
+                    "Rating.html",
+
+                    "Audio"
                 ]
             ],      
             "friendlyURL": "/home",
@@ -46,7 +50,11 @@
 
                     "Social Media.html",
 
-                    "Links.html"
+                    "Links.html",
+
+                    "Rating.html",
+
+                    "Audio"
                 ]
             ],    
             "friendlyURL": "/about",
@@ -85,7 +93,11 @@
 
                     "Social Media.html",
 
-                    "Links.html"
+                    "Links.html",
+
+                    "Rating.html",
+
+                    "Audio"
                 ]
             ], 
             "friendlyURL": "/typography",

@@ -4,180 +4,154 @@
 /* -------- Global -------- */
 
 .aui {
-		a {
-			color: #2E70b1;
-			font-family: 'Droid Sans', arial, serif;
-			letter-spacing: 0px;	
+	a {
+		color: #2E70B1;
+		font-family: 'Droid Sans', arial, serif;
+		letter-spacing: 0px;
 
-			&:hover, &:focus {
-				@include transition-delay(initial);
-				@include transition-duration(0.2s);
-				@include transition-property(color);
-				@include transition-timing-function(ease-in-out);
-				@include transition(color 0.2s ease-in-out);
-				color: #b81008;
-				text-decoration: none;
-			}
-		}		
-
-		body {
-			background-color: #EEE;
-			color: #666666;
-			font: 100% 'Droid Sans', arial, serif;
-			line-height: 1.5em;
+		&:hover, &:focus {
+			color: #B81008;
+			text-decoration: none;
 		}
+	}
 
-		.breadcrumb {
-			background-color: #fff;
-			border-bottom: 1px solid #EEE;
-			font-size: 11px;
-			margin: 0 0 20px;
-			padding: 100px 0 5px;
-		}
+	body {
+		background-color: #EEE;
+		color: #666;
+		font: 100% 'Droid Sans', arial, serif;
+		line-height: 1.5em;
+	}
 
-		h1 {
-			color: #000;
-			font-size: 24px;
-			font-weight: normal;
+	.breadcrumb {
+		background-color: #FFF;
+		border-bottom: 1px solid #EEE;
+		font-size: 11px;
+		margin: 0 0 20px;
+		padding: 100px 0 5px;
+	}
+
+	h1 {
+		color: #000;
+		font-size: 24px;
+		font-weight: normal;
+		letter-spacing: 1px;
+		line-height: 1.5em;
+		text-transform: capitalize;
+
+		span {
+			color: #222;
+			font: bold 24px 'Droid Sans', arial, serif; 
 			letter-spacing: 1px;
 			line-height: 1.2em;
-			line-height: 1.5em;
-			text-transform: capitalize;
-		
-			span {
-				color: #222;
-				font: bold 24px 'Droid Sans', arial, serif; 
-				letter-spacing: 1px;
-				line-height: 1.2em;
-				text-transform: capitalize;
-			}
-
-		}
-
-		 h2 {
-			border-bottom: 1px solid #EEE;
-			color: #666;
-			font-size: 21px;
-			font-weight: bold;
-			letter-spacing: 1px;
-			margin: 12px 0 10px;
-			padding-bottom: 10px;
-		}
-
-		h3 {
-			color: #000;
-			font: 21px 'Droid Sans', arial, serif;;
-			letter-spacing: 1px;
-			line-height: 1.5em;
-			margin-bottom: 8px;
-			margin-top: 12px;
 			text-transform: capitalize;
 		}
+	}
 
-		h3 > .entry-url  {
-			color: #000;
-		}
+	 h2 {
+		border-bottom: 1px solid #EEE;
+		color: #666;
+		font-size: 21px;
+		font-weight: bold;
+		letter-spacing: 1px;
+		margin: 12px 0 10px;
+		padding-bottom: 10px;
+	}
 
-		#heading h1 {
-			line-height: 0;
-			margin: 0px;
-			padding: 10px 0px 0px;
+	h3 {
+		color: #000;
+		font: 21px 'Droid Sans', arial, serif;;
+		letter-spacing: 1px;
+		line-height: 1.5em;
+		margin: 12px 0 8px 0;
+		text-transform: capitalize;
+	}
+
+	h3 > .entry-url {
+		color: #000;
+	}
+
+	#heading h1 {
+		margin: 0px;
+		padding: 10px 0px 0px;
+	}
+
+	li {
+		list-style-type: none;
+		text-align: left;
+	}
+
+	#navigation {
+		border-color: #B81007;
+		float: right;
+		padding-bottom: 10px; 
+		text-align: justify;
+
+		.child-menu {
+			border: 3px solid #ECECEE;
 		}
 
 		li {
-			display: list-item;
-			list-style-type: none;
-			text-align: left;
-		}
-
-		#navigation {
-			background-image: initial;
-			background-position-x: initial;
-			background-position-y: initial;
-			background-size: initial;
-			background-repeat-x: initial;
-			background-repeat-y: initial;
-			background-attachment: initial;
-			background-origin: initial;
-			background-clip: initial;
-			border-color: #b81007;
-			float: right;
-			padding-bottom: 10px; 
-			text-align: justify;
-
-			li li { 
-				border: 1px solid #ECECEE;
+			ul {
+				display: none;
 			}
 
-			li ul {
-				display: none;
-			}	
-
-			li:hover ul {
-				@include transition(background 0.2s ease-in-out);
-				@include transition-property(background);
-				@include transition-duration(0.2s);
-				@include transition-timing-function(ease-in-out);
-				@include transition-delay(initial);
+			&:hover ul {
 				background-color: #FFF;
 				display: block;
 				position: fixed;
 				float: none;
 				z-index: 999;
 			}
+		}	
 
-			ul > li {
-				float: inherit;
-			}
+		ul > li {
+			float: inherit;
+		}
 
-			ul {
-				display: inline; 
-				list-style-type: none;
-				margin: 0px 15px 10px 0;
-				text-align: left;
-				float: left;
+		ul {
+			display: inline; 
+			list-style-type: none;
+			margin: 0px 15px 10px 0;
+			text-align: left;
+			float: left;
 
-				a {
-					color: #666666;
-					display: block;
-					padding: 1.7em 15px;
-					
-					&:hover, &:focus, &:active {
-						@include transition-delay(initial);
-						@include transition-duration(0.2s);
-						@include transition-property(background);	
-						@include transition-timing-function(ease-in-out);
-						@include transition(background 0.2s ease-in-out);
-						background-color: #b81007;
-						color: #FFFFFF;
-						text-decoration: none;
-					}
-				}
+			a {
+				color: #666;
+				display: block;
+				padding: 1.7em 15px;
 
-				.selected a {
-					@include transition-delay(initial);
-					@include transition-duration(0.2s);
-					@include transition-property(background);	
-					@include transition-timing-function(ease-in-out);
-					@include transition(background 0.2s ease-in-out);
-					background-color: #b81007;
+				&:active, &:focus, &:hover{
+					background-color: #B81007;
 					color: #FFFFFF;
 					text-decoration: none;
 				}
-			}	
-		}	
+			}
 
-		.nav-tabs > li > a {
-			margin-top: 20px;
+			ul a {
+				border: 1px solid #ECECEE;
+				padding: .75em 1.2em;
+				width: 16em;
+			}
+
+			.selected a {
+				background-color: #B81007;
+				color: #FFFFFF;
+				text-decoration: none;
+			}
 		}
+	}
 
-		p {
-			margin: 0 0 0.8em;
-		}
+	.nav-tabs > li > a {
+		margin-top: 20px;
+	}
 
-		ul, menu a {
-			font-size: 14px;
-		}	
+	p {
+		margin: 0 0 0.8em;
+	}
+
+	ul, menu a {
+		font-size: 14px;
+	}
 }
 
 /* -------- Wrapper / Sign-in -------- */
@@ -210,11 +184,9 @@
 /* -------- Content -------- */
 
 #_3_search {
-	@include text-shadow(1px 1px 1px #300033);
 	background: none repeat scroll 0 0 #B81007;
-	border-radius: 5px;
 	border: 1px solid #9D4D2C;
-	color: #fff;
+	color: #FFF;
 	cursor: pointer;
 	font-weight: bold;
 	height: 20px;
@@ -228,7 +200,7 @@
 		font-weight: bold;
 		margin-bottom: 10px;
 		padding-bottom: 10px;
-	}	
+	}
 
 	h2 {
 		border-bottom: 1px solid #EEE;
@@ -243,10 +215,9 @@
 }
 
 #content {
-	color: #666666;
+	color: #666;
 	background-color: #FFF;
-	margin-right: -40px;
-	margin-left: -40px;
+	margin: 0 -40px 0 -40px;
 	padding: 10px 40px 20px 40px; 
 	text-align: left;
 } 
@@ -266,11 +237,9 @@ h1, h2, h3, h4 {
 #portlet_3 {
 	.portlet-topper {
 		display: none;
-	}	
+	}
 
 	input[type="image"] {
-		@include border-radius(4px);
-		@include text-shadow(1px 1px #300033);
 		background: #B81007;
 		clear: both;
 		color: #FFF;
@@ -280,8 +249,7 @@ h1, h2, h3, h4 {
 	}
 
 	input[type="text"] {
-		border-radius: 3px;
-		border: 1px solid #acacac;
+		border: 1px solid #ACACAC;
 		height: 16px;
 		padding: 4px 5px;
 		width: 119px;
@@ -290,21 +258,15 @@ h1, h2, h3, h4 {
 	select {
 		display: none;
 	}
-}	
+}
 
 .portlet-body {
 	color: #333;
 	font-family: 'Droid Sans', arial, serif;
-	letter-spacing: 0px; 
 	padding: 0 0 0px; 
-
-	img {
-			padding-bottom: 30px;
-	}
-} 
+}
 
 .portlet-alerts .entry-content {
-	border-bottom-color: rgb(238, 238, 238);
 	border-bottom: 1px solid #EEE;
 	margin-bottom: 20px;
 	padding: 0px 0px 20px 0px;
@@ -330,32 +292,79 @@ h1, h2, h3, h4 {
 	color: #333;
 	font: 100% 'Droid Sans', arial, serif;
 	line-height: 1.5em;
-	margin-left: -40px;
-	margin-right: -40px;
+	margin: 0 -40px 0 -40px;
 
 	.footer-box {
 		float: left;
+		margin: 0 20px 20px 0;
 		width: 215px;
-		margin-right: 20px;
-		margin-bottom: 20px;
 	}
 }
 
 #footer-saran {
 	background: #FFF;
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #EEE;
 	margin: 0 -40px 0 -40px;
 	padding: 0 0 10px 75px;
 }
 
 #footer {
-	background-color: #fff;
+	background-color: #FFF;
 	color: #333;
 	font: 12px 'Droid Sans', arial, serif;
 	line-height: 1.5em;
-	margin-left: -40px;
-	margin-right: -40px;
+	margin: 0 -40px 0 -40px;
 	padding: 10px 0 20px;
 	text-indent: 30px;
 	vertical-align: baseline;
+}
+
+/* ---------- Extras ---------- */
+
+.aui {
+	a {
+		&:hover, &:focus {
+			@include transition-delay(initial);
+			@include transition-duration(0.2s);
+			@include transition-property(color);
+			@include transition-timing-function(ease-in-out);
+			@include transition(color 0.2s ease-in-out);
+		}
+	}
+	#navigation {
+		li:hover ul {
+			@include transition(background 0.2s ease-in-out);
+			@include transition-property(background);
+			@include transition-duration(0.2s);
+			@include transition-timing-function(ease-in-out);
+			@include transition-delay(initial);
+		}
+		ul {
+			a {
+				&:active, &:focus, &:hover {
+					@include transition-delay(initial);
+					@include transition-duration(0.2s);
+					@include transition-property(background);
+					@include transition-timing-function(ease-in-out);
+					@include transition(background 0.2s ease-in-out);
+				}
+			}
+		}
+	}
+}
+
+#_3_search {
+	@include border-radius(5px);
+	@include text-shadow(1px 1px 1px #300033);
+}
+
+#portlet_3 {
+	input[type="image"] {
+		@include border-radius(4px);
+		@include text-shadow(1px 1px #300033);
+	}
+
+	input[type="text"] {
+		@include border-radius(3px);
+	}
 }
