@@ -10,7 +10,6 @@
 	body {
 		color: #555;
 		font-weight: 200;
-		line-height: 3em;
 	}
 
 	a {
@@ -32,7 +31,7 @@
 		font-weight: 200;
 	}
 
-	.alert {
+	.alert, .portlet-msg-alert, .portlet-msg-error, .portlet-msg-help, .portlet-msg-info, .portlet-msg-progress, .portlet-msg-success {
 		word-wrap: break-word;
 	}
 
@@ -69,7 +68,7 @@
 		}
 	}
 
-	input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], select, textarea, .uneditable-input {
+	#{$form_text_fields}, select {
 		border: 1px solid #DDD;
 		color: #8D8D8D;
 		font-weight: 200;
@@ -105,6 +104,12 @@
 		outline-offset: -2px;
 	}
 
+	.control-group-inline {
+		#{$form_text_fields}, select {
+			margin-bottom: 0;
+		}
+	}
+
 	.form-search, .lfr-translation-manager-selector {
 		.control-group-inline {
 			margin: 0;
@@ -138,6 +143,10 @@
 
 	.control-group {
 		margin-bottom: 30px;
+
+		.input-resource-wrapper {
+			margin-bottom: 0;
+		}
 	}
 
 	.lfr-ddm-container, .portlet-staging-bar {
@@ -146,26 +155,18 @@
 		}
 	}
 
-	@include respond-to(phone) {
-		.form-search .input-append {
-			.btn {
-				font-size: 0;
-				padding: 4px 19px 0;
-
-				&:after {
-					content: $search;
-					font-size: 18px;
-
-					@include icon-FontAwesome();
-				}
-			}
-		}
-	}
-
 	.navbar .nav > li > a {
 		&:focus, &:hover {
 			color: #009AE5;
 		}
+	}
+
+	.lfr-surface-loading-bar {
+		background: rgba(255, 255, 255, 0.5);
+	}
+
+	.dockbar-split .lfr-surface-loading-bar {
+		background: #2AAAE6;
 	}
 
 	.lfr-tree .tree-node .tree-node-selected .tree-label {
@@ -272,6 +273,7 @@
 
 	.dockbar {
 		&.navbar .navbar-inner {
+			border-bottom-width: 0;
 			min-height: 40px;
 		}
 
@@ -287,10 +289,10 @@
 					}
 
 					.user-avatar-image {
-					    position: relative;
-					    top: 2px;
-					    width: 28px;
-				    }
+						position: relative;
+						top: 2px;
+						width: 28px;
+					}
 				}
 
 				.nav-collapse {
@@ -350,7 +352,7 @@
 
 							&.active, &.open {
 								> .dropdown-toggle {
-									background-color: #3EA9DB;
+									background-color: #2FA4F5;
 									color: #FFF;
 
 									@extend %dockbar-caret;
@@ -361,14 +363,10 @@
 								border-width: 0;
 								margin: 0;
 
-								@include respond-to(phone, tablet) {
-									margin-top: 3px;
-								}
-
 								> li > a {
 									color: #FFF;
-									font-size: 0.9em;
 									font-weight: 300;
+									line-height: 31px;
 
 									@include respond-to(phone, tablet) {
 										font-size: 16px;
@@ -376,6 +374,7 @@
 
 									&:focus, &:hover {
 										background: #2FA4F5;
+										color: #FFF;
 
 										@include filter-gradient(#2FA4F5, #2FA4F5, vertical);
 									}
@@ -390,7 +389,7 @@
 								}
 
 								li.active > a {
-									background: #3B6DCC;
+									background: #0066B3;
 								}
 							}
 
@@ -494,6 +493,10 @@
 		padding: 3px 15px 2px;
 
 		li {
+			@include ellipsis;
+
+			max-width: 300px;
+
 			a {
 				display: inline-block;
 
@@ -524,26 +527,28 @@
 			display: none;
 		}
 
-		@include respond-to(phone, tablet) {
-			padding-left: 5px;
-			padding-right: 5px;
+		&.breadcrumb-horizontal {
+			@include respond-to(phone, tablet) {
+				padding-left: 5px;
+				padding-right: 5px;
 
-			li {
-				display: none;
+				li {
+					display: none;
 
-				&.only, &.first, &.last, &.current-parent {
-					display: inline-block;
-				}
-
-				&.breadcrumb-truncate {
-					&.only, &.first a, &.last a, &.active, &.current-parent a {
-						max-width: 65px;
+					&.only, &.first, &.last, &.current-parent {
+						display: inline-block;
 					}
 
-					&.current-parent:before {
-						color: #999;
-						content: " ... / ";
-						font-weight: bold;
+					&.breadcrumb-truncate {
+						&.only, &.first a, &.last a, &.active, &.current-parent a {
+							max-width: 65px;
+						}
+
+						&.current-parent:before {
+							color: #999;
+							content: ' ... / ';
+							font-weight: bold;
+						}
 					}
 				}
 			}
@@ -552,8 +557,43 @@
 
 	/* ---------- Form navigator ---------- */
 
+	.taglib-form-navigator > .form-steps > ul.form-navigator.well .tab {
+		&.active {
+			.tab-label {
+				.message {
+					color: #000;
+				}
+
+				.number {
+					background: #60BFEF;
+				}
+
+				.tab-icon {
+					color: #60BFEF;
+				}
+			}
+		}
+
+		&.section-error .tab-label .message {
+			color: #B50303;
+		}
+
+		.tab-label {
+			.message {
+				color: #000;
+			}
+
+			.number {
+				background: #CCC;
+				color: #FFF;
+			}
+		}
+	}
+
 	@include respond-to(phone, tablet) {
 		.taglib-form-navigator {
+			position: relative;
+
 			.form-navigator-content {
 				clear: both;
 				float: none;
@@ -578,6 +618,12 @@
 						margin: 0;
 						padding: 0.1em 1em;
 					}
+				}
+
+				.button-holder {
+					padding-bottom: 20px;
+					position: absolute;
+					top: 100%;
 				}
 			}
 
@@ -610,6 +656,8 @@
 		background-color: #E5E5E5;
 		border: solid #DDD;
 		border-width: 1px 0;
+
+		@include ellipsis;
 	}
 
 	.accordion .accordion-group {
@@ -738,6 +786,28 @@
 		}
 	}
 
+	/* ---------- Portlet wrapper and icons ---------- */
+
+	.dropdown-menu > li.item-remove > a {
+		color: #C00;
+		font-weight: bold;
+
+		&:focus, &:hover {
+			background-color: #C00;
+			background-image: none;
+			color: #FFF;
+		}
+	}
+
+	/* ---------- Quick access ---------- */
+
+	.quick-access-nav {
+		a {
+			background: #009AE5;
+			background: rgba(0, 154, 229, 0.9);
+		}
+	}
+
 	/* ---------- Side accordion navigations ---------- */
 
 	.add-content-menu, .lfr-edit-layout-panel, .panel-page-menu .portlet-borderless-container {
@@ -852,6 +922,17 @@
 		}
 	}
 
+	.yui3-aclist-list {
+		.yui3-aclist-item-active {
+			background-color: #0AF;
+		}
+
+		.yui3-aclist-item-hover {
+			background-color: #EEE;
+			color: inherit;
+		}
+	}
+
 	/* ---------- Extras ---------- */
 
 	$prefixes: ("-webkit-","-moz-", "-o-", "");
@@ -865,6 +946,11 @@
 		}
 	}
 
+	@mixin user-avatar-circle() {
+		@include border-radius(50%);
+		@include box-shadow(0 0 0 2px #5594E0);
+	}
+
 	@include respond-to(phone, tablet) {
 		#navigation.open .navbar-inner .nav-collapse li a {
 			@include border-radius(0);
@@ -873,6 +959,32 @@
 
 	.breadcrumb > li {
 		@include text-shadow(none);
+	}
+
+	.taglib-form-navigator > .form-steps > ul.form-navigator.well .tab {
+		&.section-error, &.section-success {
+			.tab-label .number {
+				@include transition-duration(0.25s);
+				@include transition-property(box-shadow);
+				@include transition-timing-function(ease-out);
+			}
+		}
+
+		&.section-error .tab-label .number {
+			@include box-shadow(0 0 5px 0 #B50303);
+		}
+
+		&.section-success .tab-label .number {
+			@include box-shadow(0 0 5px 0 #488F06);
+		}
+
+		.tab-label {
+			&:hover, &:focus {
+				.number {
+					@include box-shadow(0 0 5px 0 #60BFEF);
+				}
+			}
+		}
 	}
 
 	.modify-pages .delete-tab {
@@ -898,7 +1010,7 @@
 		@include border-radius(5px);
 	}
 
-	input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="number"], input[type="password"], input[type="text"], input[type="time"], input[type="week"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], textarea, .uneditable-input {
+	#{$form_text_fields} {
 		@include border-radius(0);
 		@include box-shadow(none);
 
@@ -936,8 +1048,7 @@
 
 		.container .btn, .nav li.dropdown.user-avatar {
 			.user-avatar-image {
-				@include border-radius(50%);
-				@include box-shadow(0 0 0 2px #5594E0);
+				@include user-avatar-circle();
 			}
 		}
 	}
@@ -951,12 +1062,6 @@
 
 		.icon-caret-down {
 			@include border-radius(50%);
-		}
-
-		.nav {
-			> li.open > a {
-				@include box-shadow(inset 0 3px 8px rgba(0, 0, 0, 0.125));
-			}
 		}
 	}
 
