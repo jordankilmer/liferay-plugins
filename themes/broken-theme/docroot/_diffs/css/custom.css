@@ -1,3 +1,4 @@
+@import "compass";
 @import "mixins";
 
 @import url(custom_common.css);
@@ -50,6 +51,18 @@ $dockbarOpenGradientStart: #0EA6F9;
 		position: absolute;
 		right: 0;
 		top: -1.2em;
+	}
+
+	.modal {
+		.dockbar {
+			display: none;
+		}
+	}
+
+	.modal-header {
+		font-size: 24.5px;
+		font-weight: bold;
+		text-align: center;
 	}
 
 	.redirected-to-message {
@@ -316,9 +329,6 @@ $dockbarOpenGradientStart: #0EA6F9;
 				}
 			}
 
-			* {
-				display: none;
-			}
 
 			> li > a {
 				padding: 4px 15px 5px;
